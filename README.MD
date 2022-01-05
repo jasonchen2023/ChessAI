@@ -1,6 +1,6 @@
-# Jason Chen
-## CS 76 Fall 21
-## PA 3
+# Chess AI
+
+Chess AI program utilizing Minimax and Alpha Beta Pruning algorithms to optimize chess moves.
 
 ### Usage
 
