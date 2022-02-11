@@ -1,23 +1,67 @@
 # Jason Chen
-# CS76 Fall 21
-# PA3
+# Chess AI
+
+'''
+Alpha Beta with special openings
+'''
 
 import chess
 import math
 import random
+import Openings
 
 class AlphaBetaAI():
     def __init__(self, depth_limit):
         self.depth_limit = depth_limit
         self.num_calls = 0
 
+        self.special_opening = True
+
+
+        self.opening_num = random.randint(0, len(Openings.openings)-1)
+        self.opening = Openings.openings[self.opening_num]  # opening list
+        self.opening_name = Openings.openings_dict[self.opening_num]
+        self.opening_index = 0
+
+
     # returns optimal move
     def choose_move(self, board):
-        
         self.max_player = board.turn
-        (value, move) = self.max_value(board, 0, -math.inf, math.inf)
+
+        tup = (None, None)
+
+        if self.special_opening:
+            # special opening for white player
+            if self.max_player and self.opening_index < len(self.opening):
+
+                print("Playing: ", self.opening_name, "opening")
+
+                opening_move = chess.Move.from_uci(self.opening[self.opening_index])
+                self.opening_index += 2
+                tup = (0, opening_move)            
+                    
+            elif not self.max_player and self.opening_index+1 < len(self.opening):  # black player
+                
+                print("Playing: ", self.opening_name, "opening")
+
+                opening_move = chess.Move.from_uci(self.opening[self.opening_index+1])
+                self.opening_index += 2
+                tup = (0, opening_move)
+            
+            else:   # special opening done
+
+                tup = self.max_value(board, 0, -math.inf, math.inf)
+
+        else:
+
+            tup = self.max_value(board, 0, -math.inf, math.inf)
+
+        
+
+        move = tup[1]
         print("move", move)
-        print("Value: " + str(value))
+
+        #print("Value: " + str(value))
         return move
 
     # returns move with highest value
