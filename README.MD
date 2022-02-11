@@ -1,6 +1,6 @@
 # Chess AI
 
-A Chess AI program utilizing **Minimax** and **Alpha Beta Pruning** algorithms to optimize chess moves. It returns the best move for a player taking into consideration possible moves in the future, up to a given depth. The program can play against a human player, or against itself.
+A Chess AI program utilizing **Minimax** and **Alpha Beta Pruning** algorithms to optimize chess moves. It returns the best move for a player taking into consideration possible moves in the future, up to a given depth. The program can play against a human player, or against itself. The Chess program can choose to execute an opening from The Italian Game, The Sicilian Defense, French Defense, and several others.
 
 * **Minimax** – The Minimax algorithm uses recursion to search through the game tree and returns the optimal move for the player. The algorithm assumes that the opponent (the minimizer) is rational and will attempt to minimize our utility. Taking this into account, the algorithm will return a move that maximizes the utility for the maximizer.
 
