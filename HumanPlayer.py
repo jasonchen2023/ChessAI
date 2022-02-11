@@ -25,7 +25,8 @@ class HumanPlayer():
                 print("  That is not a legal move!")
 
 
-        print(uci_move in moves)
+        # print(uci_move in moves)
 
         return uci_move
+
 
